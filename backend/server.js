@@ -102,4 +102,22 @@ process.on('unhandledRejection', (err, promise) => {
     server.close(() => process.exit(1));
 });
 
+
+
+// Add this to your server.js file
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net", "https://code.jquery.com"],
+      connectSrc: ["'self'", "ws:", "wss:"],
+      imgSrc: ["'self'", "data:", "https:"],
+    },
+  })
+); 
+
+
 module.exports = app;
+
+
