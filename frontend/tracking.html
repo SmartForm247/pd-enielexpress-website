@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Shipment - P&D EnielExpress</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation (same as index.html) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/images/logo.png" alt="P&D EnielExpress" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="tracking.html">Track Shipment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light ms-2" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header bg-primary text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="display-4 fw-bold">Track Your Shipment</h1>
+                    <p class="lead">Stay updated on the status of your package in real-time</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tracking Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body p-4">
+                            <h4 class="card-title mb-4">Enter Tracking Number</h4>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control form-control-lg" id="trackingInput" placeholder="Enter your tracking number">
+                                <button class="btn btn-primary btn-lg" type="button" id="trackBtn">Track</button>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">You can find your tracking number on your receipt or invoice</small>
+                                <button class="btn btn-sm btn-outline-secondary" id="scanQRBtn">
+                                    <i class="bi bi-qr-code-scan"></i> Scan QR Code
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tracking Results (Initially Hidden) -->
+                    <div id="trackingResults" class="card shadow-sm" style="display: none;">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Shipment Details</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <p class="mb-2"><strong>Tracking Number:</strong> <span id="trackingNumber">ENX123456789</span></p>
+                                    <p class="mb-2"><strong>Status:</strong> <span class="badge bg-success" id="shipmentStatus">In Transit</span></p>
+                                    <p class="mb-2"><strong>Estimated Delivery:</strong> <span id="estimatedDelivery">June 15, 2023</span></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="mb-2"><strong>Origin:</strong> <span id="origin">New York, USA</span></p>
+                                    <p class="mb-2"><strong>Destination:</strong> <span id="destination">London, UK</span></p>
+                                    <p class="mb-2"><strong>Service Type:</strong> <span id="serviceType">International Express</span></p>
+                                </div>
+                            </div>
+
+                            <h6 class="mb-3">Tracking History</h6>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-marker bg-success"></div>
+                                    <div class="timeline-content">
+                                        <h6 class="mb-1">Out for Delivery</h6>
+                                        <p class="text-muted mb-1">London, UK</p>
+                                        <small class="text-muted">June 14, 2023, 09:30 AM</small>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-marker bg-success"></div>
+                                    <div class="timeline-content">
+                                        <h6 class="mb-1">Arrived at Destination Facility</h6>
+                                        <p class="text-muted mb-1">London, UK</p>
+                                        <small class="text-muted">June 13, 2023, 02:15 PM</small>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-marker bg-success"></div>
+                                    <div class="timeline-content">
+                                        <h6 class="mb-1">In Transit</h6>
+                                        <p class="text-muted mb-1">International Hub</p>
+                                        <small class="text-muted">June 11, 2023, 11:45 AM</small>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-marker bg-success"></div>
+                                    <div class="timeline-content">
+                                        <h6 class="mb-1">Departed Facility</h6>
+                                        <p class="text-muted mb-1">New York, USA</p>
+                                        <small class="text-muted">June 10, 2023, 04:20 PM</small>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-marker bg-success"></div>
+                                    <div class="timeline-content">
+                                        <h6 class="mb-1">Package Received</h6>
+                                        <p class="text-muted mb-1">New York, USA</p>
+                                        <small class="text-muted">June 9, 2023, 10:30 AM</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 d-flex justify-content-between">
+                                <button class="btn btn-outline-primary" id="notifyBtn">
+                                    <i class="bi bi-bell"></i> Get Notifications
+                                </button>
+                                <button class="btn btn-outline-secondary" id="shareBtn">
+                                    <i class="bi bi-share"></i> Share Tracking
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QR Scanner Modal -->
+                    <div class="modal fade" id="qrScannerModal" tabindex="-1" aria-labelledby="qrScannerModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="qrScannerModalLabel">Scan QR Code</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body text-center">
+                                    <div id="qr-reader" style="width: 100%;"></div>
+                                    <p class="mt-3 text-muted">Position the QR code within the frame to scan</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-4">
+                    <h3 class="fw-bold">Need Help With Tracking?</h3>
+                    <p class="lead text-muted">Find answers to common tracking questions</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold mb-3">Where can I find my tracking number?</h5>
+                            <p class="card-text">Your tracking number can be found on your shipping receipt, invoice confirmation email, or SMS notification. It's typically a 10-15 digit number.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold mb-3">How often is tracking information updated?</h5>
+                            <p class="card-text">Tracking information is updated in real-time as your package moves through our network. Major updates include pickup, in transit, out for delivery, and delivered.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-bold mb-3">What do the different tracking statuses mean?</h5>
+                            <p class="card-text">Each status indicates a specific stage in your shipment's journey. From "Package Received" to "Out for Delivery" and finally "Delivered."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="contact.html" class="btn btn-primary">Contact Support</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as index.html) -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>P&D EnielExpress</h5>
+                    <p>Your trusted partner for shipping and logistics solutions. Fast, secure, and reliable delivery services.</p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#" class="text-white"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-linkedin fs-5"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6>Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="about.html" class="text-white-50">About Us</a></li>
+                        <li class="mb-2"><a href="services.html" class="text-white-50">Services</a></li>
+                        <li class="mb-2"><a href="tracking.html" class="text-white-50">Track Shipment</a></li>
+                        <li class="mb-2"><a href="contact.html" class="text-white-50">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h6>Services</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50">Domestic Shipping</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50">International Shipping</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50">E-commerce Solutions</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50">Trading Services</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h6>Contact Info</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> 123 Logistics Street, City</li>
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i> +123 456 7890</li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> info@enielexpress.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-white-50 my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2023 P&D EnielExpress. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/tracking.js"></script>
+    <script src="js/scan.js"></script>
+</body>
+</html>
